@@ -1,4 +1,3 @@
-import React from "react";
 import {secondsToDuration} from "../utils/duration/index";
 
 const ShowTimeRemaining = ({focusRun, breakRun, onBreak, isStopped}) => {
@@ -16,3 +15,4 @@ const ShowTimeRemaining = ({focusRun, breakRun, onBreak, isStopped}) => {
 }
 
 
+export default ShowTimeRemaining;

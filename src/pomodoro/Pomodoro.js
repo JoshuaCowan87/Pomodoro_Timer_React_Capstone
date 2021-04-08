@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import classNames from "../utils/class-names";
 import useInterval from "../utils/useInterval";
-import {minutesToDuration} from "../utils/duration/index";
 import ShowTimeRemaining from "./ShowTimeRemaining";
 import SessionTitle from "./SessionTitle";
 import Pause from "./Pause";
 import ProgressBar from "./ProgressBar";
-import Audio from "./Audio"
-import ModifyButtonsDuration from "./ModifyDurationButtons"
+import ModifyDurationButtons from "./ModifyDurationButtons"
 
 
 function Pomodoro() {
@@ -18,7 +16,6 @@ function Pomodoro() {
   const [onBreak, setOnBreak] = useState(false);
   const [focusTime, setFocusTime] = useState(25);
   const [breakTime, setBreakTime] = useState(5);
-  const [percentComplete, setPercentComplete] = useState(0);
   const [focusRun, setFocusRun] = useState(focusTime * 60);
   const [breakRun, setBreakRun] = useState(breakTime * 60);
   const [ariaValue, setAriaValue] = useState(0)
@@ -58,29 +55,29 @@ const runSession = () => {
   else { 
     setOnBreak(true);
       if (breakRun === breakTime*60) {
-    {Audio}
+        new Audio(`https://bigsoundbank.com/UPLOAD/mp3/1482.mp3`).play();
     console.log("Switching to break time");
     setBreakRun((prevCount) => prevCount -1)
-  }
+    }
     if (breakRun > 0) {
        setBreakRun((prevCount) => prevCount -1)
     }
-  if (focusRun === 0 && breakRun === 0) {
-       {Audio}
+    if (focusRun === 0 && breakRun === 0) {
+    new Audio(`https://bigsoundbank.com/UPLOAD/mp3/1482.mp3`).play();
     console.log("Restarting Timer")
     setOnBreak(false);
     setFocusRun(focusTime * 60);
     setBreakRun(breakTime * 60);    
+    }
   }
-    // progress bar values
-  }
+            // progress bar values
   if (!onBreak) {
    setAriaValue(100*(focusTime * 60 - focusRun)/(focusTime*60))
  } 
   else {setAriaValue(100*(breakTime * 60 - breakRun)/(breakTime*60))
        }
 }
-console.log(ariaValue)
+
 
 
   useInterval(() => {
@@ -96,6 +93,7 @@ console.log(ariaValue)
 
   return (
     <div className="pomodoro">
+ {/* Modify Duration Buttons*/}     
       <div>
         <ModifyDurationButtons 
         increaseFocus={increaseFocus}
@@ -140,10 +138,10 @@ console.log(ariaValue)
           </div>
         </div>
       </div>     
-      <div>
-        
+      <div>        
         <div className="row mb-2">
-          <div data-testid="session-title" className="col">           
+          <div data-testid="session-title" className="col">        
+
  {/* Session Title       */}
               <SessionTitle
                onBreak={onBreak}
@@ -151,6 +149,7 @@ console.log(ariaValue)
                breakTime={breakTime}
                isStopped={isStopped}/>
           </div>
+
 {/* TimeRemaining  */}
           <div>
             <p className="lead" data-testid="session-sub-title">
@@ -162,6 +161,7 @@ console.log(ariaValue)
             </p>
           </div>
         </div>
+
 {/* Pause Sign */}        
         <div>
           <Pause 
@@ -171,11 +171,10 @@ console.log(ariaValue)
             breakRun={breakRun}
             breakTime={breakTime}
             isStopped={isStopped}
-            />
-     
-            
+            />     
         </div>
         <div>
+
  {/* Progress Bar */}       
             <ProgressBar
               ariaValue={ariaValue}

@@ -1,4 +1,5 @@
 import {minutesToDuration} from "../utils/duration/index";
+import React from "react";
 
 const ModifyDurationButtons = ({breakTime, focusTime, increaseFocus, decreaseFocus, increaseBreak, decreaseBreak, isTimerRunning}) => {
 

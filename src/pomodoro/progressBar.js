@@ -1,7 +1,4 @@
-
-import React, { useState } from "react";
-import classNames from "../utils/class-names";
-
+import React from "react";
 
 const ProgressBar = ({ariaValue, isStopped}) => {
   if (isStopped) return null 
