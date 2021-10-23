@@ -1,7 +1,7 @@
 ## Pomodoro Timer
   Allowes users to set a timer to help manage time for studying and break times. Based on the pomodoro technique created by italian inventor Francesco Cirillo. Having predetermined study and break times allows for more efficient time management, rest and creativity. A progress bar tracks the progress for each study and break session, as well as audio alerts when transition from one session to another.
 
-  See it [live!] (https://pomodoro-timer-react-capstone.vercel.app/)
+  See it [live!](https://pomodoro-timer-react-capstone.vercel.app/)
 
 ## Tech Stack
 Javascript, React, Bootstrap
